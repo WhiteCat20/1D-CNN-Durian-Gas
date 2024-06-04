@@ -1,7 +1,6 @@
 import os
 import numpy as np
 import pandas as pd
-from tensorflow.keras.models import load_model
 import tensorflow as tf
 import easygui
 import joblib
@@ -16,7 +15,7 @@ def preprocess_data(data, scaler):
     data = data.reshape((data.shape[0], data.shape[1], 1))
     return data
 
-interpreter = tf.lite.Interpreter(model_path='29052024-192640.tflite')
+interpreter = tf.lite.Interpreter(model_path='03062024-011728.tflite')
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
