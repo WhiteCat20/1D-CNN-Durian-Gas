@@ -15,7 +15,7 @@ def preprocess_data(data, scaler):
     data = data.reshape((data.shape[0], data.shape[1], 1))
     return data
 
-interpreter = tf.lite.Interpreter(model_path='03062024-011728.tflite')
+interpreter = tf.lite.Interpreter(model_path='model/03062024-011728.tflite')
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
@@ -35,6 +35,6 @@ interpreter.invoke()
 predictions = interpreter.get_tensor(output_details[0]['index'])
 
 # Melakukan prediksi
-predictions = np.round(predictions).flatten()
+predictions = np.round(predictions[0],2).flatten()
 
 print(f'Predictions: {predictions}')
